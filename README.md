@@ -32,7 +32,7 @@ A Django-based task management system that allows users to create, assign, and m
 
    ```bash
    git clone git@github.com:cm1100/task_management_system.git
-   cd task_management
+   cd task_management_system
    ```
 
 1. **Build the Docker Image**:
@@ -58,7 +58,7 @@ A Django-based task management system that allows users to create, assign, and m
 
    ```bash
    git clone git@github.com:cm1100/task_management_system.git
-   cd task_management
+   cd task_management_system
    ```
 
 2. **Create and Activate a Virtual Environment**:
