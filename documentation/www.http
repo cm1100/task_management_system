@@ -7,11 +7,16 @@ POST {{base_url}}/account/user/rest/
 Content-Type: application/json
 
 {
-    "name": "raj",
-    "email":"raj@example.com",
+    "name": "chaitanya",
+    "email":"chaitanya@example.com",
     "mobile":"9811844678",
     "password": "chaitanya"
 }
+
+
+### get user detail by email
+GET {{base_url}}/account/user/rest/?email=chaitanya@example.com
+Content-Type: application/json
 
 
 ### api to get token for a user
@@ -22,6 +27,7 @@ Content-Type: application/json
     "email": "chaitanya@example.com",
     "password": "chaitanya"
 }
+
 
 
 ### refreshing token for a user

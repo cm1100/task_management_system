@@ -1,8 +1,10 @@
 from rest_framework.serializers import ModelSerializer
 from accounts.models import CustomUser
+from rest_framework.serializers import CharField
 
 
 class UserSerializer(ModelSerializer):
+    password = CharField(write_only=True)
     class Meta:
         model = CustomUser
         fields = ["id", "name","mobile","email","password", "is_staff"]

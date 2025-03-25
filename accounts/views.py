@@ -12,7 +12,15 @@ class UserViewSet(ModelViewSet):
     permission_classes=[AllowAny]
     queryset=CustomUser.objects.all()
     serializer_class=UserSerializer
-    http_method_names = ['post']
+    http_method_names = ['post','get']
 
+
+
+    def get_queryset(self):
+        
+        queryset= super().get_queryset()
+        if self.request.GET.get("email"):
+            queryset=queryset.filter(email=self.request.GET.get("email"))
+        return queryset
 
 
