@@ -1,0 +1,84 @@
+@base_url = http://localhost:8000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4ODk1OTQ4LCJpYXQiOjE3NDI4OTU5NDgsImp0aSI6IjhkMmVlOTQxZTVlMDQ2ZjRiYjQ0ODIzNTE3MTU2NDg5IiwidXNlcl9pZCI6MX0.igh6onDwZLtHk2UezeUqJqv0abqvCG29a54mwgc9DvQ
+
+
+### API to create user
+POST {{base_url}}/account/user/rest/
+Content-Type: application/json
+
+{
+    "name": "raj",
+    "email":"raj@example.com",
+    "mobile":"9811844678",
+    "password": "chaitanya"
+}
+
+
+### api to get token for a user
+POST {{base_url}}/api/token/
+Content-Type: application/json
+
+{
+    "email": "chaitanya@example.com",
+    "password": "chaitanya"
+}
+
+
+### refreshing token for a user
+POST {{base_url}}/api/token/refresh/
+Content-Type: application/json
+
+{
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc0Mjk3OTc2MiwiaWF0IjoxNzQyODkzMzYyLCJqdGkiOiJhOWZhNDg2YzBiMzk0NjRiYTM1MjI5N2UyZjMyNTk1NSIsInVzZXJfaWQiOjR9.NX_ty_JV_H-FL3na9CKeBa_gjw2XrjoLokk1IMgNKPo"
+}
+
+
+### get all the tasks which exists in a system
+GET {{base_url}}/task/rest/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### make a task in the system
+POST {{base_url}}/task/rest/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "task2",
+    "description":"task1 description",
+    "status":"pending",
+    "task_type":"task",
+    "assigned_users":[1]
+}
+
+### assign it to users
+PATCH {{base_url}}/task/rest/1/ 
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    
+    "assigned_users":[1]
+}
+
+### complete a task
+PATCH {{base_url}}/task/rest/1/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "status":"completed",
+    "completed_at":"2025-09-01T00:00:00Z"
+}
+
+### get details of a specific task
+GET {{base_url}}/task/rest/1/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### get all the tasks associated to a user
+GET {{base_url}}/task/rest/?user_id=1
+Content-Type: application/json
+Authorization: Bearer {{token}}
